@@ -18,14 +18,22 @@ from prompts import get_system_prompt, generate_gpt_response
 import psycopg2
 import toml
 
-# Load secrets from TOML configuration
+# Load secrets from TOML configuration to get the OpenAI API key
 config = toml.load('.streamlit/secrets.toml')
-sql_config = config['connections']['postgresql']
+OPENAI_API_KEY = config['openai_api_key']
+
+# Fetch database configuration from environment variables
+DBNAME = os.environ.get('DBNAME')
+DBUSER = os.environ.get('DBUSER')
+DBPASSWORD = os.environ.get('DBPASSWORD')
+DBHOST = os.environ.get('DBHOST')
+DBPORT = os.environ.get('DBPORT')
+SSL_MODE = os.environ.get('SSL_MODE', 'require')  # Default to 'require' if not specified
 
 # Construct the connection string for PostgreSQL
 connection_string = f"""
-dbname={sql_config['dbname']} user={sql_config['user']} password={sql_config['password']} 
-host={sql_config['host']} port={sql_config['port']} sslmode={sql_config['sslmode']}
+dbname={DBNAME} user={DBUSER} password={DBPASSWORD} 
+host={DBHOST} port={DBPORT} sslmode={SSL_MODE}
 """
 
 # Establish connection to PostgreSQL
@@ -74,7 +82,7 @@ def recognize_speech():
 st.image("img.jpg", width=100)
 st.title("LAGOZON TECHNOLOGIES PVT. LTD.")
 
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+client = OpenAI(api_key=OPENAI_API_KEY)
 if "messages" not in st.session_state:
     st.session_state.messages = [{"role": "system", "content": get_system_prompt()}]
 
@@ -120,4 +128,3 @@ if st.session_state.messages[-1]["role"] != "assistant":
         
         st.session_state.messages.append(message)
         # st.set_option('server.enableCORS', True)
-
