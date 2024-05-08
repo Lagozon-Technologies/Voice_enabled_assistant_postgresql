@@ -27,9 +27,7 @@ CREATE VIEW sales_distribution_by_channel_type AS
 SELECT STORE_ID, BUSINESS_MONTH,
        DELIVERY_SALES, DINEIN_SALES, TAKEAWAY_SALES
 FROM Main_data;
-Average Order Value by Channel:
-sql
-Copy code
+
 CREATE VIEW avg_order_value_by_channel AS
 SELECT STORE_ID, BUSINESS_MONTH,
        DELIVERY_SALES / NULLIF(DELIVERY_ORDER, 0) AS AVG_DELIVERY_ORDER_VALUE,
