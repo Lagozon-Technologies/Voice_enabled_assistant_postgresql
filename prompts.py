@@ -19,7 +19,8 @@ SSL_MODE = os.environ.get('SSL_MODE', 'require')  # Default to 'require' if not 
 connection_string = f"dbname={DBNAME} user={DBUSER} password={DBPASSWORD} host={DBHOST} port={DBPORT} sslmode={SSL_MODE}"
 
 SCHEMA_PATH = os.environ.get("SCHEMA_PATH", "public")
-QUALIFIED_TABLE_NAME = f"{SCHEMA_PATH}.LZ_Foods"
+#QUALIFIED_TABLE_NAME = f"{SCHEMA_PATH}.LZ_Foods"
+QUALIFIED_TABLE_NAME = LZ_Foods
 TABLE_DESCRIPTION = """
 The dataset contains sales data for various stores, including total sales, orders, and sales distribution across different channels. It provides insights into delivery sales, dine-in sales, and takeaway sales, segmented by different delivery platforms such as Swiggy, Zomato, Amazon Foods, and various payment gateways like GPay, Paytm, PhonePe, and more. Additionally, it includes information on sales made through different devices such as desktop, mobile apps (Android and iPhone), and web platforms (PWA).
 """
