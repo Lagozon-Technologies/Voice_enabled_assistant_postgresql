@@ -58,7 +58,8 @@ patsy==0.5.6
 pillow==10.3.0
 plotly==5.22.0
 plotnine==0.13.5
-protobuf==5.26.1
+#protobuf==5.26.1
+protobuf==4.25.3
 psycopg2==2.9.9
 pyarrow==16.0.0
 pyasn1==0.6.0
