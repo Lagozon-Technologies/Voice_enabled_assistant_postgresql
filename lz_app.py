@@ -18,7 +18,7 @@ from prompts import get_system_prompt, generate_gpt_response
 import psycopg2
 import toml
 
-OPENAI_API_KEY = 'sk-proj-FlppOcEOPJNa4IiiNralT3BlbkFJnmP54NfQYV2l98wGubn5'
+#OPENAI_API_KEY = 'sk-proj-FlppOcEOPJNa4IiiNralT3BlbkFJnmP54NfQYV2l98wGubn5'
 
 # Fetch database configuration from environment variables
 DBNAME = os.environ.get('DBNAME')
@@ -37,7 +37,7 @@ host={DBHOST} port={DBPORT} sslmode={SSL_MODE}
 # Establish connection to PostgreSQL
 def get_sql_connection():
     return psycopg2.connect(connection_string)
-llm = OpenAI(temperature=0.2)
+llm = OpenAI()
 # lida = Manager(text_gen=llm("openai")) commenting due to error
 # adding line below to test.
 lida = Manager(text_gen=llm)
