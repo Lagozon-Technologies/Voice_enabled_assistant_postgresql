@@ -37,8 +37,10 @@ host={DBHOST} port={DBPORT} sslmode={SSL_MODE}
 # Establish connection to PostgreSQL
 def get_sql_connection():
     return psycopg2.connect(connection_string)
-
-lida = Manager(text_gen=llm("openai"))
+llm = OpenAI(temperature=0.2)
+# lida = Manager(text_gen=llm("openai")) commenting due to error
+# adding line below to test.
+lida = Manager(text_gen=llm)
 textgen_config = TextGenerationConfig(n=1, temperature=0.2, use_cache=True)
 
 def generate_lida_visualization(data_df):
