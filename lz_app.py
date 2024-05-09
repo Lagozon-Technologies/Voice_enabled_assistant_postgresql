@@ -18,9 +18,7 @@ from prompts import get_system_prompt, generate_gpt_response
 import psycopg2
 import toml
 
-# Load secrets from TOML configuration to get the OpenAI API key
-config = toml.load('.streamlit/secrets.toml')
-OPENAI_API_KEY = config['openai_api_key']
+OPENAI_API_KEY = 'sk-proj-FlppOcEOPJNa4IiiNralT3BlbkFJnmP54NfQYV2l98wGubn5'
 
 # Fetch database configuration from environment variables
 DBNAME = os.environ.get('DBNAME')
@@ -84,7 +82,7 @@ st.title("LAGOZON TECHNOLOGIES PVT. LTD.")
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 if "messages" not in st.session_state:
-    st.session_state.messages = [{"role": "system", "content": get_system_prompt()}]
+    st.session_state.messages = [{"role": "system", "content": "Welcome!"}]
 
 if st.button('Speak'):
     recognized_text = recognize_speech()
@@ -127,4 +125,3 @@ if st.session_state.messages[-1]["role"] != "assistant":
             generate_lida_visualization(query_results)
         
         st.session_state.messages.append(message)
-        # st.set_option('server.enableCORS', True)
