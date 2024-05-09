@@ -4,8 +4,8 @@ import toml
 import streamlit as st
 
 # Load the secrets.toml configuration to get the OpenAI API key
-config = toml.load('.streamlit/secrets.toml')
-OPENAI_API_KEY = config['openai_api_key']
+# config = toml.load('.streamlit/secrets.toml')
+# OPENAI_API_KEY = config['openai_api_key']
 
 # Fetch database configuration from environment variables
 DBNAME = os.environ.get('DBNAME')
