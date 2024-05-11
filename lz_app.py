@@ -37,9 +37,10 @@ host={DBHOST} port={DBPORT} sslmode={SSL_MODE}
 # Establish connection to PostgreSQL
 def get_sql_connection():
     return psycopg2.connect(connection_string)
-
-lida = Manager(text_gen = llm("openai", api_key=os.environ.get('OPENAI_API_KEY'))) # !! api key
-textgen_config = TextGenerationConfig(n=1, temperature=0.2, model="gpt-3.5-turbo-0301", use_cache=True)
+print(os.environ.get('OPENAI_API_KEY'))
+OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
+lida = Manager(text_gen = llm("openai", api_key=OPENAI_API_KEY)) # !! api key
+textgen_config = TextGenerationConfig(n=1, temperature=0.2, model="gpt-3.5-turbo", use_cache=True)
 #textgen_config = TextGenerationConfig(n=1, temperature=0.2, use_cache=True)
 
 def generate_lida_visualization(data_df):
