@@ -84,7 +84,8 @@ st.title("LAGOZON TECHNOLOGIES PVT. LTD.")
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
 client = OpenAI(api_key=OPENAI_API_KEY)
 if "messages" not in st.session_state:
-    st.session_state.messages = [{"role": "system", "content": "Welcome!"}]
+    st.session_state.messages = [{"role": "system", "content": get_system_prompt()}]
+    #st.session_state.messages = [{"role": "system", "content": "Welcome!"}]
 
 if st.button('Speak'):
     recognized_text = recognize_speech()
