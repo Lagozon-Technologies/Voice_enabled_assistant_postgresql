@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 from lida import Manager, TextGenerationConfig, llm
 from prompts import get_system_prompt, generate_gpt_response
 import psycopg2
-import toml
+#import toml
 
 #OPENAI_API_KEY = 'sk-proj-FlppOcEOPJNa4IiiNralT3BlbkFJnmP54NfQYV2l98wGubn5'
 
